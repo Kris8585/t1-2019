@@ -1,0 +1,16 @@
+<carousel *ngIf="bandera === 0">
+    <slide *ngFor="let item of NoticiasMostrar">
+        <img src="{{item.imagen}}" alt="first slide" style="display: block; width: 100%;">
+        <div class="carousel-caption d-none d-md-block">
+            <h3>{{item.titulo}}</h3>
+            <a class="btn btn-primary btn-md btn-rounded" [routerLink]="[ '/noticiasEdit/', item.id ]">Detalles</a>
+            <p>{{item.descripcion}}</p>
+
+        </div>
+
+    </slide>
+</carousel>
+
+<div class="alert alert-primary" role="alert" *ngIf="bandera === 1">
+    No se encontró información!
+</div>

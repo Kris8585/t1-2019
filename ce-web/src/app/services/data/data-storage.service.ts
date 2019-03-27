@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import ListNoticia from '../../../assets/json/noticias.json';
 
 
 @Injectable({
@@ -7,7 +8,7 @@ import { Injectable } from '@angular/core';
 export class DataStorageService {
 
   constructor() { }
-
+  NoticiasList: Noticia[] = ListNoticia; 
 
   setObjectValue= (key:string, objectValue:any)=>{
     if (window.localStorage) {
@@ -22,7 +23,9 @@ export class DataStorageService {
         if (DATA) {
           return DATA;
         }else{
-          throw new Error('No se encontró el valor ${key} en el localStorage');
+          //throw new Error('No se encontró el valor ${key} en el localStorage');
+          return null;
+                     
         }
       }else{
         throw new Error('No se puede obtener la información, porque no está habilitado el localStorage');

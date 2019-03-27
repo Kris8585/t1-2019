@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { DataStorageService } from 'src/app/services/data/data-storage.service';
 
 @Component({
@@ -11,8 +12,7 @@ export class NavbarComponent implements OnInit {
   constructor(private DataStorage: DataStorageService) { }
 
   ngOnInit() {
-
-    this.DataStorage.setObjectValue("hola", 1);
+    this.DataStorage.setObjectValue("Noticias", this.DataStorage.NoticiasList);
   }
 
 }
