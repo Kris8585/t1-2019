@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-noticias-upsert',
@@ -7,7 +8,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NoticiasUpsertComponent implements OnInit {
 
-  constructor() { }
+  formGroup: FormGroup;
+  formBuilder: FormBuilder;
+  
+  constructor() { 
+    this.formBuilder = new FormBuilder();
+    this.iniciarNoticia();
+    
+  }
+
+  iniciarNoticia = () => {
+    this.formGroup = this.formBuilder.group({
+      id: ['(nueva)', [Validators.required],],
+      titulo: ['', [Validators.required]],
+      imagen: ['', [Validators.required]],
+      descripcion: ['', [Validators.required, Validators.minLength(15)]],
+      fechaCreacion: [new Date()],
+      ultimaModificacion: [new Date()],
+    });
+  }
+
+  guardarData = () => {
+
+    console.log(this.formGroup);
+    
+  }
+  
+
+
+
+
 
   ngOnInit() {
   }
